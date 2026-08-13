@@ -10,7 +10,8 @@ schema/
 ├── 00.0002.0000/001-add-confirmed-users.sql
 ├── 00.0003.0000/001-add-client-ascent-id.sql
 ├── 00.0004.0000/001-remove-photo-secure-url.sql
-└── 00.0005.0000/001-add-deleted-users-and-photo-position-check.sql
+├── 00.0005.0000/001-add-deleted-users-and-photo-position-check.sql
+└── 00.0006.0000/001-add-outbox-retry-columns.sql
 ```
 
 Todos generados e idempotentes. Qué aporta cada versión:
@@ -22,6 +23,7 @@ Todos generados e idempotentes. Qué aporta cada versión:
 | `00.0003.0000` | `ascents.client_ascent_id` y el índice parcial `ux_ascents_user_client_id` |
 | `00.0004.0000` | Elimina `ascent_photos.secure_url`: la URL se firma en cada lectura |
 | `00.0005.0000` | `deleted_users` (fila lápida) y `ck_ascent_photo_position` |
+| `00.0006.0000` | `outbox_messages.attempt_count` y `next_attempt_at_utc`, y el índice pasa a cubrir las dos columnas del filtro de elegibilidad |
 
 `00.0002.0000` y `00.0003.0000` se generaron en **delta**; de `00.0004.0000` en adelante son
 **acumulativos**, que es la forma correcta (`DEVELOPMENT.md` §8). Los publicados no se corrigen
