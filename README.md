@@ -1,6 +1,6 @@
 # ascent-service-database
 
-SQL versionado de `peaker_ascents` (PostgreSQL 16), la base de datos de `ascent-service`.
+SQL versionado de `ascenda_ascents` (PostgreSQL 16), la base de datos de `ascent-service`.
 
 ## Qué hay aquí
 
